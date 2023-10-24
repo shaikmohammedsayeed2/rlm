@@ -1,0 +1,71 @@
+<section id="intro" class="about-section pt-70" >
+    <div class="container">
+      <div class="row gutters justify-content-center">
+        <h1 #publicationssection style="text-align: center;">Recent Publications</h1>
+        <div class="col-lg-8 col-xl-8 col-md-12 col-sm-12 justify-content-between"> <!--col-xl-8 col-lg-12 col-md-12 col-sm-12-->
+          <div class="card" style="border:none">
+            <div class="card-body" >
+              <!-- Timeline start -->
+              <div class="timeline">
+                <div #publicationssectionpub class="timeline-row" *ngFor="let pub of recentPublications">
+                  <div class="timeline-time">{{pub.pub_date}}</div>
+                  <div class="timeline-dot fb-bg"></div>
+                  <div class="timeline-content">
+                    <i class="fa fa-check"></i>
+                    <h4>{{pub.pub_title  | truncate:28  }}</h4>
+                    <p>
+                     {{pub.description| truncate:100}}
+                    </p>
+                    <button class="btn-get-started" (click)="openPdf(pub.blob_storage)">PDF</button>
+                  </div>
+                </div>
+                
+              </div>
+              <!-- Timeline end -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row gutters justify-content-center">
+        <div class="col  d-flex justify-content-center ">
+          <a routerLink="../research/publications"> <button class="btn-get-started" >View More</button></a> 
+        </div>
+        </div>
+    </div>
+  </section>
+
+  <section id="intro" class="about-section pt-70">
+    <div class="container">
+      <div class="row gutters justify-content-center">
+        <h1 #conferencessection style="text-align: center;">Upcoming Conferences</h1>
+        <div class="col-lg-8 col-xl-8 col-md-12 col-sm-12 justify-content-between"> <!--col-xl-8 col-lg-12 col-md-12 col-sm-12-->
+          <div class="card" style="border:none">
+            <div class="card-body" >
+              <!-- Timeline start -->
+              <div class="timeline">
+                <div #conferencesssectionconf class="timeline-row" *ngFor = "let conf of upcomingConferences">
+                  <div class="timeline-time">{{conf.end_date}}</div>
+                  <div class="timeline-dot fb-bg"></div>
+                  <div class="timeline-content">
+                    <i class="fa fa-check"></i>
+                    <h4>{{conf.conf_title  | truncate:28  }}</h4>
+                    <p>
+                     {{conf.description| truncate:100}}
+                    </p>
+                    <button class="btn-get-started" (click)="openPdf(conf.blob_storage)">Click Here</button>
+                  </div>
+                </div>
+                
+              </div>
+              <!-- Timeline end -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row gutters justify-content-center">
+        <div class="col  d-flex justify-content-center ">
+          <a routerLink="../research/conferences"> <button class="btn-get-started" >View More</button></a> 
+        </div>
+        </div>
+    </div>
+  </section>

@@ -1,0 +1,32 @@
+<!-- <p>admin-header works!</p> -->
+
+
+<header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+        <!-- <h1 class="text-light"><a href="index.html"></a></h1> -->
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <a (click)="setId(1)" routerLink="/home"><img [src]="headerData?.logo" alt="" class="img-fluid"></a> <span style="font-size: larger; font-weight: bolder;">{{headerData?.labName}}</span>
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto" (click)="setId(1)" [ngClass]="{'active': id === 1 }" routerLink="home">Home</a></li>
+          <li><a class="nav-link scrollto" (click)="setId(2)" [ngClass]="{'active': id === 2 }" routerLink="people">People <i class="bi bi-person-add"></i></a></li>
+          <li><a class="nav-link scrollto" (click)="setId(3)" [ngClass]="{'active': id === 3 }" routerLink="research/publications">Publications <i class="bi bi-journal-arrow-up"></i></a></li>
+          <li><a class="nav-link scrollto" (click)="setId(4)" [ngClass]="{'active': id === 4 }" routerLink="research/conferences">Conferences <i class="bi bi-book"></i></a></li>
+          <!-- <li><a class="nav-link scrollto" (click)="setId(3)" [ngClass]="{'active': id === 3 }" routerLink="/research">Research</a></li> -->
+          <li><a class="nav-link scrollto" (click)="setId(5)" [ngClass]="{'active': id === 5 }" routerLink="gallery">Add Gallery <i class="bi bi-images"></i></a></li>
+          <li><a class="nav-link scrollto" (click)="setId(6)" [ngClass]="{'active': id === 6 }" routerLink="profile" >Profile <i class="bi bi-person-fill"></i></a></li>
+          <li><a class="nav-link scrollto" (click)="setId(7)" [ngClass]="{'active': id === 7 }" routerLink="feedback" >Feedback <i class="bi bi-ui-radios-grid"></i></a></li>
+          <li><a class="nav-link scrollto" (click)="setId(8)" [ngClass]="{'active': id === 8 }" routerLink="addlab" *ngIf="isAdmin">Add Lab <i class="bi bi-plus-circle"></i></a></li>
+          <li><a class="nav-link scrollto"  [routerLink]="'/features/'+lab_id+'/home'"> View Website <i class="bi bi-arrow-up-right-square-fill"></i> </a></li>
+          <li><a class="nav-link scrollto" (click)="logout()">logout</a></li>
+          <!-- <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header>

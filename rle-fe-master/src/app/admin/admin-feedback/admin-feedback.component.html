@@ -1,0 +1,48 @@
+<section id="intro" class="about-section" style="margin-top:5rem ;">
+    <div class="container">
+      <div class="row gutters justify-content-center">
+        <h1 style="text-align: center;">View or Delete Feedback</h1>
+        <div class="col-lg-8 col-xl-8 col-md-12 col-sm-12 justify-content-between"> <!--col-xl-8 col-lg-12 col-md-12 col-sm-12-->
+          <ng-template #selectAllTemplate2 let-changeEvent>
+            <label class="ngx-form-checkbox">
+              <input type="checkbox" [(ngModel)]="allSelected" (ngModelChange)="changeEvent()" />
+              <i class="ngx-form-icon custom-checkbox-color" id="selectAllCheckbox2"></i>
+            </label>
+          </ng-template>
+          <ngx-table
+            [configuration]="configuration"
+            [data]="data"
+            [columns]="columns"
+            [selectAllTemplate]="selectAllTemplate2"
+            (event)="tableEventEmitted($event)"
+          >
+            <ng-template let-row>
+              <td>
+                <label class="ngx-form-checkbox">
+                  <input type="checkbox" [(ngModel)]="row.selected" (ngModelChange)="rowSelected()" />
+                  <i class="ngx-form-icon custom-checkbox-color"></i>
+                </label>
+              </td>
+              <td>
+                <h5 class="color-green font-light">{{ row.name }}</h5>
+              </td>
+              <td>
+                <div class="font-small"> {{ row.email }}</div>
+              </td>
+              <td>
+                <div class="font-small"> {{ row.subject }}</div>
+              </td>
+              <td>
+                <div class="font-small">{{ row.message }}</div>
+              </td>
+            </ng-template>
+          </ngx-table>
+        </div>
+        <div class="col-lg-4">
+          <button class="btn btn-danger mt-3" (click)="multiDeleteFeedback()">Multi Delete</button>
+        </div>
+      </div>
+         
+        </div>
+  </section>
+  

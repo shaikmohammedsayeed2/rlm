@@ -1,0 +1,120 @@
+<section id="intro" class="about-section" style="margin-top:5rem ;">
+    <div class="container">
+      <div class="row gutters justify-content-center">
+        <h1 style="text-align: center;">Add or Edit People</h1>
+        <div class="col-lg-8 col-xl-8 col-md-12 col-sm-12 justify-content-between"> <!--col-xl-8 col-lg-12 col-md-12 col-sm-12-->
+          <form [formGroup]="peopleform">
+            <div class="form-group row">
+              <label for="inputpersonname" class="col-sm-2 col-form-label">Person Name</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" id="inputpersonname" placeholder="Person Name" formControlName = "PersonName">
+              </div>
+              <label for="rollno" class="col-sm-2 col-form-label">Roll Number</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" id="rollno" placeholder="Roll No" formControlName = "RollNo">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="linkedinurl" class="col-sm-2 col-form-label">LinkedIn Url</label>
+              <div class="col-sm-4">
+                <input type="link-input" class="form-control" id="linkedinurl" placeholder="LinkedIn Url" formControlName = "LinkedinUrl">
+              </div>
+              <label for="githuburl" class="col-sm-2 col-form-label">Github Url</label>
+              <div class="col-sm-4">
+                <input type="githuburl" class="form-control" id="githuburl" placeholder="Github Url" formControlName = "GithubUrl">
+              </div>
+              <label for="personalweburl" class="col-sm-2 col-form-label">Personal WebUrl</label>
+              <div class="col-sm-4">
+                <input type="personalweburl" class="form-control" id="personalweburl" placeholder="Personal WebUrl" formControlName = "PersonalWebUrl">
+              </div>
+            </div>
+            <div class="form-group row">
+              <!-- <div class="col-sm-4">
+                <input type="text" class="form-control" id="personrole" placeholder="Person Role" formControlName = "personRole">
+              </div> -->
+              <label for="personrole" class="col-2 col-form-label">Person Role</label>
+              <div class="col-8">
+                <select class="form-select " id="personrole" (change)="onChangePersonRole($event)"
+              formControlName="PersonRole">
+                <option value="">--Please select an option--</option>
+                <option value="student">student</option>
+                <option value="faculty">faculty</option>
+                <option value="staff">staff</option>
+                <option value="sponsor">sponsor</option>                
+              </select> 
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="userrole" class="col-sm-2 col-form-label">User Role</label>
+             <div class="col-8">
+              <select class="form-select" id="userrole"  (change)="onChangeUserRole($event)"
+              formControlName="UserRole">
+                <option value="">--Please select an option--</option>
+                <option value="admin">admin</option>
+                <option value="user">user</option>
+                <option value="manager">manager</option>              
+              </select>
+             </div>
+            </div>
+
+            <div class="form-group row"  style="margin-top:2rem ;">
+              <label for="personimage" class="col-sm-2 col-form-label">Person Photo to upload</label>
+              <div class="col-sm-5">
+                <input #profilePhotInput type="file" id="personimage" (change)="onFileSelected($event)"  class="form-control">
+              </div>
+              <div class="col-1" style="cursor: pointer;"> <i (click)="uploadImage(selectedFile,'profilePhoto')" class="bi bi-upload" style="margin-top: 0.5rem; color: 	rgb(0, 0, 0);font-size: 23px; "></i></div>
+              <div *ngIf="profilePhoto!=''"class="col-4 d-flex" style="justify-content: center;" >
+              <img  [src]="profilePhoto" class="lab-overview-img" >
+              </div>
+              <!-- <div class="col-sm-6">
+                <span *ngIf="!isPersonImagePresent">No Image Has Been Selected</span>
+                <img [src]="personimage" >
+              </div> -->
+            </div>
+            <div class="form-group row mt-4">
+              <div class="col-sm-10  d-flex justify-content-center ">
+                <button (click)="onpeopleSubmit(peopleform.value)" class="btn btn-primary px-10" style="padding-left: 2rem; padding-right: 2rem;margin-left: 6rem;">SAVE</button>
+                <button (click)="clearForm()" class="btn btn-secondary px-10" style="padding-left: 2rem; padding-right: 2rem;margin-left: 6rem;">CLEAR</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+          <div class="row gutter">
+            <h1 style="text-align: center; margin-top: 5rem;">All Publications List</h1>
+            <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 ">
+                 <ngx-table [configuration]="configuration"
+               [data]="allPeopleData"
+               [columns]="columns"
+               >
+               <ng-template let-row>
+                <td>
+                  <div class="font-small">{{ row.name }}</div>
+                </td>
+                <td>
+                  <span class="font-small">{{ row.roll_number | truncate:28  }}</span>
+                </td>
+                <td>
+                  <span class="font-small">{{ row.user_access }}</span>
+                </td>
+                <td>
+                  <span class="font-small">{{ row.user_role_name }}</span>
+                </td>
+                <td>
+                  <ul class="list-inline m-0">
+                    
+                    <li class="list-inline-item">
+                        <button (click)="onEditClick(row)" class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="bi bi-pencil-square"></i></button>
+                    </li>
+                    <li class="list-inline-item">
+                        <button [disabled]="user_info.email == row.roll_number?true:false" (click)="onDeleteClick(row)" class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="bi bi-trash"></i></button>
+                    </li>
+                </ul>
+                </td>
+              </ng-template>
+    </ngx-table>
+            </div>
+          </div>
+        </div>
+  </section>
+  

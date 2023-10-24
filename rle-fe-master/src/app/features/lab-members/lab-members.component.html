@@ -1,0 +1,88 @@
+
+   <!-- ======= Team Section ======= -->
+   <section id="team" class="team mt-5" >
+    <div class="container" >
+      <div class="section-title" data-aos="fade-up">
+        <p>Faculty</p>
+      </div>
+
+      <div class="row justify-content-center">
+
+        <div class="col-xl-3 col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100" *ngFor="let faculty of facultyList">
+          <div class="member">
+            <img [src]="faculty.profile_url" class="img-fluid" alt="">
+            <div class="member-info">
+              <div class="member-info-content">
+                <h4>{{faculty.name}}</h4>
+                <span>{{faculty.roll_number}}</span>
+              </div>
+              <div class="social">
+                <a [attr.href]=" faculty.github_url" [title]="faculty.github_url"  target="_blank"><i class="bi bi-github"></i></a>
+                <a [attr.href]=" faculty.personal_web_url" [title]="faculty.personal_web_url" target="_blank"><i class="bi bi-browser-edge"></i></a>
+                <a [attr.href]=" faculty.linkedin_url" [title]="faculty.linkedin_url" target="_blank"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="container" >
+
+        <div class="section-title mt-5" data-aos="fade-up">
+          <p>Students</p>
+        </div>
+  
+        <div class="row justify-content-center">
+  
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100" *ngFor="let student of studentsList">
+            <div class="member">
+              <img [src]="student.profile_url" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>{{student.name}}</h4>
+                  <span>{{student.roll_number}}</span>
+                </div>
+                <div class="social">
+                  <a [attr.href]="'//' + student.github_url" [title]="student.github_url" target="_blank" ><i class="bi bi-github"></i></a>
+                  <a [attr.href]="'//' + student.personal_web_url" [title]="student.personal_web_url" target="_blank"><i class="bi bi-browser-edge"></i></a>
+                  <a [attr.href]="'//' + student.linkedin_url" [title]="student.linkedin_url" target="_blank" ><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+  
+      </div>
+      <div class="container" >
+
+        <div class="section-title mt-5" data-aos="fade-up">
+          <p>Sponsors</p>
+        </div>
+  
+        <div class="row justify-content-center">
+  
+          <div class="col-xl-3 col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100" *ngFor="let sponsor of sponsorsList">
+            <div class="member">
+              <img [src]="sponsor.profile_url" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>{{sponsor.name}}</h4>
+                  <span>{{sponsor.roll_number}}</span>
+                </div>
+                <div class="social">
+                  <a [attr.href]="'//' + sponsor.github_url" [title]="sponsor.github_url"  target="_blank"><i class="bi bi-github"></i></a>
+                  <a [attr.href]="'//' + sponsor.personal_web_url" [title]="sponsor.personal_web_url" target="_blank"><i class="bi bi-browser-edge"></i></a>
+                  <a [attr.href]="'//' + sponsor.linkedin_url" [title]="sponsor.linkedin_url" target="_blank"><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+  
+      </div>
+  </section><!-- End Team Section -->
